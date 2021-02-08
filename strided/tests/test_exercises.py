@@ -6,7 +6,7 @@ https://towardsdatascience.com/advanced-numpy-master-stride-tricks-with-25-illus
 import numpy as np
 from numpy.testing import assert_array_equal
 from pytest import fixture
-from strided import gather_strided
+from strided import gather, gather_sparse, scatter_sparse
 from .utils import as_strided
 
 
@@ -23,8 +23,11 @@ def test_exercise01(A):
     B = as_strided(A, shape, strides)
     assert_array_equal(B, expected)
 
-    G = gather_strided(A, shape, strides)
+    G = gather(A, shape, strides)
     assert_array_equal(G, expected)
+
+    S = gather_sparse(A, shape, strides)
+    assert_array_equal(S, expected)
 
 
 def test_exercise02(A):
@@ -35,8 +38,11 @@ def test_exercise02(A):
     B = as_strided(A, shape, strides)
     assert_array_equal(B, expected)
 
-    G = gather_strided(A, shape, strides)
+    G = gather(A, shape, strides)
     assert_array_equal(G, expected)
+
+    S = gather_sparse(A, shape, strides)
+    assert_array_equal(S, expected)
 
 
 def test_exercise03(A):
@@ -47,8 +53,11 @@ def test_exercise03(A):
     B = as_strided(A, shape, strides)
     assert_array_equal(B, expected)
 
-    G = gather_strided(A, shape, strides)
+    G = gather(A, shape, strides)
     assert_array_equal(G, expected)
+
+    S = gather_sparse(A, shape, strides)
+    assert_array_equal(S, expected)
 
 
 def test_exercise04(A):
@@ -59,8 +68,11 @@ def test_exercise04(A):
     B = as_strided(A, shape, strides)
     assert_array_equal(B, expected)
 
-    G = gather_strided(A, shape, strides)
+    G = gather(A, shape, strides)
     assert_array_equal(G, expected)
+
+    S = gather_sparse(A, shape, strides)
+    assert_array_equal(S, expected)
 
 
 def test_exercise05(A):
@@ -71,8 +83,11 @@ def test_exercise05(A):
     B = as_strided(A, shape, strides)
     assert_array_equal(B, expected)
 
-    G = gather_strided(A, shape, strides)
+    G = gather(A, shape, strides)
     assert_array_equal(G, expected)
+
+    S = gather_sparse(A, shape, strides)
+    assert_array_equal(S, expected)
 
 
 def test_exercise06(A):
@@ -83,8 +98,11 @@ def test_exercise06(A):
     B = as_strided(A, shape, strides)
     assert_array_equal(B, expected)
 
-    G = gather_strided(A, shape, strides)
+    G = gather(A, shape, strides)
     assert_array_equal(G, expected)
+
+    S = gather_sparse(A, shape, strides)
+    assert_array_equal(S, expected)
 
 
 def test_exercise07(A):
@@ -95,8 +113,11 @@ def test_exercise07(A):
     B = as_strided(A, shape, strides)
     assert_array_equal(B, expected)
 
-    G = gather_strided(A, shape, strides)
+    G = gather(A, shape, strides)
     assert_array_equal(G, expected)
+
+    S = gather_sparse(A, shape, strides)
+    assert_array_equal(S, expected)
 
 
 def test_exercise08(A):
@@ -107,8 +128,11 @@ def test_exercise08(A):
     B = as_strided(A, shape, strides)
     assert_array_equal(B, expected)
 
-    G = gather_strided(A, shape, strides)
+    G = gather(A, shape, strides)
     assert_array_equal(G, expected)
+
+    S = gather_sparse(A, shape, strides)
+    assert_array_equal(S, expected)
 
 
 def test_exercise09(A):
@@ -119,8 +143,11 @@ def test_exercise09(A):
     B = as_strided(A, shape, strides)
     assert_array_equal(B, expected)
 
-    G = gather_strided(A, shape, strides)
+    G = gather(A, shape, strides)
     assert_array_equal(G, expected)
+
+    S = gather_sparse(A, shape, strides)
+    assert_array_equal(S, expected)
 
 
 def test_exercise10(A):
@@ -131,8 +158,11 @@ def test_exercise10(A):
     B = as_strided(A, shape, strides)
     assert_array_equal(B, expected)
 
-    G = gather_strided(A, shape, strides)
+    G = gather(A, shape, strides)
     assert_array_equal(G, expected)
+
+    S = gather_sparse(A, shape, strides)
+    assert_array_equal(S, expected)
 
 
 def test_exercise11(A):
@@ -143,8 +173,11 @@ def test_exercise11(A):
     B = as_strided(A, shape, strides)
     assert_array_equal(B, expected)
 
-    G = gather_strided(A, shape, strides)
+    G = gather(A, shape, strides)
     assert_array_equal(G, expected)
+
+    S = gather_sparse(A, shape, strides)
+    assert_array_equal(S, expected)
 
 
 def test_exercise12(A):
@@ -155,8 +188,11 @@ def test_exercise12(A):
     B = as_strided(A, shape, strides)
     assert_array_equal(B, expected)
 
-    G = gather_strided(A, shape, strides)
+    G = gather(A, shape, strides)
     assert_array_equal(G, expected)
+
+    S = gather_sparse(A, shape, strides)
+    assert_array_equal(S, expected)
 
 
 def test_exercise13():
@@ -168,8 +204,11 @@ def test_exercise13():
     B = as_strided(A, shape, strides)
     assert_array_equal(B, expected)
 
-    G = gather_strided(A, shape, strides)
+    G = gather(A, shape, strides)
     assert_array_equal(G, expected)
+
+    S = gather_sparse(A, shape, strides)
+    assert_array_equal(S, expected)
 
 
 def test_exercise14():
@@ -181,8 +220,11 @@ def test_exercise14():
     B = as_strided(A, shape, strides)
     assert_array_equal(B, expected)
 
-    G = gather_strided(A, shape, strides)
+    G = gather(A, shape, strides)
     assert_array_equal(G, expected)
+
+    S = gather_sparse(A, shape, strides)
+    assert_array_equal(S, expected)
 
 
 def test_exercise15():
@@ -200,8 +242,11 @@ def test_exercise15():
     B = as_strided(A, shape, strides)
     assert_array_equal(B, expected)
 
-    G = gather_strided(A, shape, strides)
+    G = gather(A, shape, strides)
     assert_array_equal(G, expected)
+
+    S = gather_sparse(A, shape, strides)
+    assert_array_equal(S, expected)
 
 
 def test_exercise16():
@@ -213,8 +258,11 @@ def test_exercise16():
     B = as_strided(A, shape, strides)
     assert_array_equal(B, expected)
 
-    G = gather_strided(A, shape, strides)
+    G = gather(A, shape, strides)
     assert_array_equal(G, expected)
+
+    S = gather_sparse(A, shape, strides)
+    assert_array_equal(S, expected)
 
 
 def test_exercise17(A):
@@ -225,7 +273,7 @@ def test_exercise17(A):
     B = as_strided(A, shape, strides)
     assert_array_equal(B, expected)
 
-    G = gather_strided(A, shape, strides)
+    G = gather(A, shape, strides)
     assert_array_equal(G, expected)
 
 
@@ -237,7 +285,7 @@ def test_exercise18(A):
     B = as_strided(A, shape, strides)
     assert_array_equal(B, expected)
 
-    G = gather_strided(A, shape, strides)
+    G = gather(A, shape, strides)
     assert_array_equal(G, expected)
 
 
@@ -249,7 +297,7 @@ def test_exercise19(A):
     B = as_strided(A, shape, strides)
     assert_array_equal(B, expected)
 
-    G = gather_strided(A, shape, strides)
+    G = gather(A, shape, strides)
     assert_array_equal(G, expected)
 
 
@@ -262,8 +310,11 @@ def test_exercise20():
     B = as_strided(A, shape, strides)
     assert_array_equal(B, expected)
 
-    G = gather_strided(A, shape, strides)
+    G = gather(A, shape, strides)
     assert_array_equal(G, expected)
+
+    SS = scatter_sparse(G, shape, strides)
+    assert_array_equal(SS.reshape(A.shape), A)
 
 
 def test_exercise21():
@@ -284,7 +335,7 @@ def test_exercise21():
     B = as_strided(A, shape, strides)
     assert_array_equal(B, expected)
 
-    G = gather_strided(A, shape, strides)
+    G = gather(A, shape, strides)
     assert_array_equal(G, expected)
 
 
@@ -297,8 +348,11 @@ def test_exercise22():
     B = as_strided(A, shape, strides)
     assert_array_equal(B, expected)
 
-    G = gather_strided(A, shape, strides)
+    G = gather(A, shape, strides)
     assert_array_equal(G, expected)
+
+    SS = scatter_sparse(G, shape, strides)
+    assert_array_equal(SS.reshape(A.shape), A)
 
 
 def test_exercise23(A):
@@ -318,7 +372,7 @@ def test_exercise23(A):
     B = as_strided(A, shape, strides)
     assert_array_equal(B, expected)
 
-    G = gather_strided(A, shape, strides)
+    G = gather(A, shape, strides)
     assert_array_equal(G, expected)
 
 
@@ -331,7 +385,7 @@ def test_exercise24():
     B = as_strided(A, shape, strides)
     assert_array_equal(B, expected)
 
-    G = gather_strided(A, shape, strides)
+    G = gather(A, shape, strides)
     assert_array_equal(G, expected)
 
 
@@ -344,5 +398,8 @@ def test_exercise25():
     B = as_strided(A, shape, strides)
     assert_array_equal(B, expected)
 
-    G = gather_strided(A, shape, strides)
+    G = gather(A, shape, strides)
     assert_array_equal(G, expected)
+
+    SS = scatter_sparse(G, shape, strides)
+    assert_array_equal(SS.reshape(A.shape), A)

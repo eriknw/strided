@@ -1,1 +1,1 @@
-from .core import gather_strided  # noqa
+from .core import gather, gather_sparse, scatter_sparse  # noqa

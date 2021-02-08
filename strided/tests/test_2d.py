@@ -1,6 +1,6 @@
 import numpy as np
 from numpy.testing import assert_array_equal
-from strided import gather_strided
+from strided import gather, gather_sparse, scatter_sparse
 from .utils import as_strided, zeros_nearby
 
 
@@ -22,8 +22,11 @@ def test_upper_band():
     B = as_strided(A, shape, strides)
     assert_array_equal(B, expected)
 
-    G = gather_strided(A, shape, strides)
+    G = gather(A, shape, strides)
     assert_array_equal(G, expected)
+
+    S = gather_sparse(A, shape, strides)
+    assert_array_equal(S, expected)
 
 
 def test_lower_band():
@@ -44,8 +47,11 @@ def test_lower_band():
     B = as_strided(A, shape, strides)
     assert_array_equal(B, expected)
 
-    G = gather_strided(A, shape, strides)
+    G = gather(A, shape, strides)
     assert_array_equal(G, expected)
+
+    S = gather_sparse(A, shape, strides)
+    assert_array_equal(S, expected)
 
 
 def test_upper_band_offset():
@@ -67,8 +73,11 @@ def test_upper_band_offset():
     B = as_strided(A, shape, strides, offset=offset)
     assert_array_equal(B, expected)
 
-    G = gather_strided(A, shape, strides, offset=offset)
+    G = gather(A, shape, strides, offset=offset)
     assert_array_equal(G, expected)
+
+    S = gather_sparse(A, shape, strides, offset=offset)
+    assert_array_equal(S, expected)
 
 
 def test_triband_offset():
@@ -90,8 +99,11 @@ def test_triband_offset():
     B = as_strided(A, shape, strides, offset=offset)
     assert_array_equal(B, expected)
 
-    G = gather_strided(A, shape, strides, offset=offset)
+    G = gather(A, shape, strides, offset=offset)
     assert_array_equal(G, expected)
+
+    S = gather_sparse(A, shape, strides, offset=offset)
+    assert_array_equal(S, expected)
 
 
 def test_lower_band_offset():
@@ -113,8 +125,11 @@ def test_lower_band_offset():
     B = as_strided(A, shape, strides, offset=offset)
     assert_array_equal(B, expected)
 
-    G = gather_strided(A, shape, strides, offset=offset)
+    G = gather(A, shape, strides, offset=offset)
     assert_array_equal(G, expected)
+
+    S = gather_sparse(A, shape, strides, offset=offset)
+    assert_array_equal(S, expected)
 
 
 def test_lower_band_other():
@@ -136,8 +151,11 @@ def test_lower_band_other():
     B = as_strided(A, shape, strides, offset=offset)
     assert_array_equal(B, expected)
 
-    G = gather_strided(A, shape, strides, offset=offset)
+    G = gather(A, shape, strides, offset=offset)
     assert_array_equal(G, expected)
+
+    S = gather_sparse(A, shape, strides, offset=offset)
+    assert_array_equal(S, expected)
 
 
 def test_diagonal_vector():
@@ -157,8 +175,11 @@ def test_diagonal_vector():
     B = as_strided(A, shape, strides)
     assert_array_equal(B, expected)
 
-    G = gather_strided(A, shape, strides)
+    G = gather(A, shape, strides)
     assert_array_equal(G, expected)
+
+    S = gather_sparse(A, shape, strides)
+    assert_array_equal(S, expected)
 
 
 def test_diagonal_scalar():
@@ -179,8 +200,11 @@ def test_diagonal_scalar():
     B = as_strided(A, shape, strides)
     assert_array_equal(B, expected)
 
-    G = gather_strided(A, shape, strides)
+    G = gather(A, shape, strides)
     assert_array_equal(G, expected)
+
+    S = gather_sparse(A, shape, strides)
+    assert_array_equal(S, expected)
 
 
 def test_double_diagonal():
@@ -202,7 +226,7 @@ def test_double_diagonal():
     B = as_strided(A, shape, strides).reshape((6, 6))
     assert_array_equal(B, expected)
 
-    G = gather_strided(A, shape, strides).reshape((6, 6))
+    G = gather(A, shape, strides).reshape((6, 6))
     assert_array_equal(G, expected)
 
 
@@ -225,8 +249,11 @@ def test_matrix_zeropad_top():
     B = as_strided(A, shape, strides, offset=offset)
     assert_array_equal(B, expected)
 
-    G = gather_strided(A, shape, strides, offset=offset)
+    G = gather(A, shape, strides, offset=offset)
     assert_array_equal(G, expected)
+
+    S = gather_sparse(A, shape, strides, offset=offset)
+    assert_array_equal(S, expected)
 
 
 def test_matrix_checkers1():
@@ -246,7 +273,7 @@ def test_matrix_checkers1():
     B = as_strided(A, shape, strides, offset=offset).reshape((4, 2))
     assert_array_equal(B, expected)
 
-    G = gather_strided(A, shape, strides, offset=offset).reshape((4, 2))
+    G = gather(A, shape, strides, offset=offset).reshape((4, 2))
     assert_array_equal(G, expected)
 
 
@@ -266,7 +293,7 @@ def test_matrix_checkers2():
     B = as_strided(A, shape, strides).reshape((4, 2))
     assert_array_equal(B, expected)
 
-    G = gather_strided(A, shape, strides).reshape((4, 2))
+    G = gather(A, shape, strides).reshape((4, 2))
     assert_array_equal(G, expected)
 
 
@@ -288,7 +315,7 @@ def test_matrix_checkers_full1():
     B = as_strided(A, shape, strides, offset=offset).reshape((4, 4))
     assert_array_equal(B, expected)
 
-    G = gather_strided(A, shape, strides, offset=offset).reshape((4, 4))
+    G = gather(A, shape, strides, offset=offset).reshape((4, 4))
     assert_array_equal(G, expected)
 
 
@@ -310,5 +337,88 @@ def test_matrix_checkers_full2():
     B = as_strided(A, shape, strides, offset=offset).reshape((4, 4))
     assert_array_equal(B, expected)
 
-    G = gather_strided(A, shape, strides, offset=offset).reshape((4, 4))
+    G = gather(A, shape, strides, offset=offset).reshape((4, 4))
     assert_array_equal(G, expected)
+
+
+def test_matrix_mirror():
+    A = np.arange(1, 21, dtype=np.uint8).reshape((4, 5))
+    strides = (5, -1)
+    shape = (4, 5)
+    offset = 4
+    expected = np.array(
+        [
+            [5, 4, 3, 2, 1],
+            [10, 9, 8, 7, 6],
+            [15, 14, 13, 12, 11],
+            [20, 19, 18, 17, 16],
+        ],
+        dtype=A.dtype,
+    )
+    B = as_strided(A, shape, strides, offset=offset)
+    assert_array_equal(B, expected)
+
+    G = gather(A, shape, strides, offset=offset)
+    assert_array_equal(G, expected)
+
+    S = gather_sparse(A, shape, strides, offset=offset)
+    assert_array_equal(S, expected)
+
+    SS = scatter_sparse(G, shape, strides, offset=offset)
+    assert_array_equal(SS.reshape(A.shape), A)
+
+
+def test_matrix_flip():
+    A = np.arange(1, 13, dtype=np.uint8).reshape((3, 4))
+    strides = (-4, 1)
+    shape = (3, 4)
+    offset = 8
+    expected = np.array(
+        [[9, 10, 11, 12], [5, 6, 7, 8], [1, 2, 3, 4]],
+        dtype=A.dtype,
+    )
+    B = as_strided(A, shape, strides, offset=offset)
+    assert_array_equal(B, expected)
+
+    G = gather(A, shape, strides, offset=offset)
+    assert_array_equal(G, expected)
+
+    S = gather_sparse(A, shape, strides, offset=offset)
+    assert_array_equal(S, expected)
+
+    SS = scatter_sparse(G, shape, strides, offset=offset)
+    assert_array_equal(SS.reshape(A.shape), A)
+
+
+def test_broadcast_rows():
+    # This is like exercise 12, but broadcasts other axis
+    A = np.arange(1, 26, dtype=np.uint8).reshape((5, 5))
+    strides = (0, 1)
+    shape = (4, 5)
+    expected = np.repeat(A[0, :], 4).reshape((5, 4)).T
+
+    B = as_strided(A, shape, strides)
+    assert_array_equal(B, expected)
+
+    G = gather(A, shape, strides)
+    assert_array_equal(G, expected)
+
+    S = gather_sparse(A, shape, strides)
+    assert_array_equal(S, expected)
+
+
+def test_broadcast_scalar():
+    A = np.arange(1, 5, dtype=np.uint8)
+    strides = (0, 0)
+    shape = (3, 4)
+    offset = 2
+    expected = A[offset] * np.ones(shape, dtype=A.dtype)
+
+    B = as_strided(A, shape, strides, offset=offset)
+    assert_array_equal(B, expected)
+
+    G = gather(A, shape, strides, offset=offset)
+    assert_array_equal(G, expected)
+
+    S = gather_sparse(A, shape, strides, offset=offset)
+    assert_array_equal(S, expected)
