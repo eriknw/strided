@@ -1,7 +1,7 @@
 import numpy as np
 from numpy.testing import assert_array_equal
 from pytest import fixture
-from strided import gather, gather_sparse
+from strided import gather, gather_sparse, scatter_sparse
 from .utils import as_strided, zeros_nearby
 
 
@@ -25,6 +25,11 @@ def test_1d_offset(A):
     S = gather_sparse(A, shape, strides, offset=offset)
     assert_array_equal(S, expected)
 
+    SS = scatter_sparse(G, shape, strides, offset=offset, output_shape=A.shape)
+    expected2 = np.zeros(A.shape, dtype=A.dtype)
+    expected2[2:5] = A[2:5]
+    assert_array_equal(SS, expected2)
+
 
 def test_1d_offset_negative(A):
     strides = (1,)
@@ -41,6 +46,11 @@ def test_1d_offset_negative(A):
     S = gather_sparse(A, shape, strides, offset=offset)
     assert_array_equal(S, expected)
 
+    SS = scatter_sparse(G, shape, strides, offset=offset, output_shape=A.shape)
+    expected2 = np.zeros(A.shape, dtype=A.dtype)
+    expected2[:2] = A[:2]
+    assert_array_equal(SS, expected2)
+
 
 def test_1d_offset_reverse(A):
     strides = (-1,)
@@ -56,3 +66,8 @@ def test_1d_offset_reverse(A):
 
     S = gather_sparse(A, shape, strides, offset=offset)
     assert_array_equal(S, expected)
+
+    SS = scatter_sparse(G, shape, strides, offset=offset, output_shape=A.shape)
+    expected2 = np.zeros(A.shape, dtype=A.dtype)
+    expected2[3:6] = A[3:6]
+    assert_array_equal(SS, expected2)

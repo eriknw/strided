@@ -19,6 +19,19 @@ def gather(array, shape, strides, *, offset=0):
 
 
 def gather_sparse(array, shape, strides, *, offset=0):
+    """Iterate over input array to "gather" into output array.
+
+    This requires solving a linear diophantine equation of the form
+
+        stride[0] * x_0 + ... + stride[n] * x_n = source_index + offsest
+
+    with
+
+        0 <= x_i < shape[i], and x_i is integer
+
+    and not including stride values of 0.
+
+    """
     if len(shape) == 1:
         return _gather_sparse_1d(array, shape, strides, offset=offset)
     if len(shape) == 2:
@@ -64,7 +77,7 @@ def _gather_sparse_2d(array, shape, strides, *, offset=0):
         rv[:, :] = rv1d[:, None]
         return rv
 
-    # this is hacky (for now)
+    # this is hacky (for now) to, uh, help develop tests ;)
     import sympy
     from functools import reduce
     from itertools import starmap
@@ -125,9 +138,16 @@ def _gather_sparse_2d(array, shape, strides, *, offset=0):
     return rv
 
 
-def scatter_sparse(array, shape, strides, *, offset=0):
+def scatter_sparse(array, shape, strides, *, offset=0, output_shape=None):
+    """Iterate over the input array to scatter into the output array.
+
+    This is designed to "undo" a gather operation with the same arguments.
+
+    """
     # The particular semantics of this function are to be defined and understood
-    rv = np.zeros(shape, dtype=array.dtype)
+    if output_shape is None:
+        output_shape = shape
+    rv = np.zeros(output_shape, dtype=array.dtype)
     array_flat = array.flat
     rv_flat = rv.flat
     for source_idx in range(array.size):
