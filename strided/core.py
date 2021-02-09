@@ -23,13 +23,15 @@ def gather_sparse(array, shape, strides, *, offset=0):
 
     This requires solving a linear diophantine equation of the form
 
-        stride[0] * x_0 + ... + stride[n] * x_n = source_index + offsest
+        stride[0] * x_0 + ... + stride[m] * x_m = source_index + offset
 
     with
 
-        0 <= x_i < shape[i], and x_i is integer
+        0 <= x_i < shape[i], and x_i is integer for all i
 
-    and not including stride values of 0.
+    and not including stride values of 0.  Then compute dest_index from x_i's:
+
+        dest_index = x_0 * prod(shape[1:]) + x_1 * prod(shape[2:]) + ... + x_m
 
     """
     if len(shape) == 1:
@@ -143,8 +145,9 @@ def scatter_sparse(array, shape, strides, *, offset=0, output_shape=None):
 
     This is designed to "undo" a gather operation with the same arguments.
 
+    Accumulate values scattered to the same destination.
+
     """
-    # The particular semantics of this function are to be defined and understood
     if output_shape is None:
         output_shape = shape
     rv = np.zeros(output_shape, dtype=array.dtype)
