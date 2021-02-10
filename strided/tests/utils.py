@@ -1,4 +1,6 @@
 import numpy as np
+from functools import reduce
+from operator import mul
 from numpy.lib.stride_tricks import as_strided as np_as_strided, DummyArray
 
 
@@ -10,11 +12,15 @@ def array_offset(array, offset):
     return np.array(DummyArray(d, base=array), copy=False)
 
 
-def as_strided(array, shape, strides, *, offset=None):
+def as_strided(array, shape, strides, *, offset=None, output_shape=None):
     """ Modified ``numpy.lib.stride_tricks.as_strided`` to include offset"""
     if offset is not None:
         array = array_offset(array, offset)
-    return np_as_strided(array, shape, strides)
+    rv = np_as_strided(array, shape, strides)
+    if output_shape is not None:
+        size = reduce(mul, output_shape)
+        rv = rv.flat[:size].reshape(output_shape)
+    return rv
 
 
 def zeros_nearby(array, num_zeros):

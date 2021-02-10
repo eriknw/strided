@@ -1,8 +1,10 @@
 import numpy as np
 
 
-def gather(array, shape, strides, *, offset=0):
-    rv = np.empty(shape, dtype=array.dtype)
+def gather(array, shape, strides, *, offset=0, output_shape=None):
+    if output_shape is None:
+        output_shape = shape
+    rv = np.empty(output_shape, dtype=array.dtype)
     array_flat = array.flat
     rv_flat = rv.flat
     for dest_idx in range(rv.size):
@@ -18,7 +20,7 @@ def gather(array, shape, strides, *, offset=0):
     return rv
 
 
-def gather_sparse(array, shape, strides, *, offset=0):
+def gather_sparse(array, shape, strides, *, offset=0, output_shape=None):
     """Iterate over input array to "gather" into output array.
 
     This requires solving a linear diophantine equation of the form
@@ -35,14 +37,16 @@ def gather_sparse(array, shape, strides, *, offset=0):
 
     """
     if len(shape) == 1:
-        return _gather_sparse_1d(array, shape, strides, offset=offset)
+        return _gather_sparse_1d(array, shape, strides, offset=offset, output_shape=output_shape)
     if len(shape) == 2:
-        return _gather_sparse_2d(array, shape, strides, offset=offset)
+        return _gather_sparse_2d(array, shape, strides, offset=offset, output_shape=output_shape)
     raise NotImplementedError()
 
 
-def _gather_sparse_1d(array, shape, strides, *, offset=0):
-    rv = np.zeros(shape, dtype=array.dtype)
+def _gather_sparse_1d(array, shape, strides, *, offset=0, output_shape=None):
+    if output_shape is None:
+        output_shape = shape
+    rv = np.zeros(output_shape, dtype=array.dtype)
     array_flat = array.flat
     [size] = shape
     [stride] = strides
@@ -65,8 +69,10 @@ def _gather_sparse_1d(array, shape, strides, *, offset=0):
     return rv
 
 
-def _gather_sparse_2d(array, shape, strides, *, offset=0):
-    rv = np.zeros(shape, dtype=array.dtype)
+def _gather_sparse_2d(array, shape, strides, *, offset=0, output_shape=None):
+    if output_shape is None:
+        output_shape = shape
+    rv = np.zeros(output_shape, dtype=array.dtype)
     array_flat = array.flat
     rv_flat = rv.flat
 
