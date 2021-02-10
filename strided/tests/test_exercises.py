@@ -77,33 +77,6 @@ def test_exercise01(A):
 
     run(**locals())
 
-    # Forward
-    B = as_strided(A, shape, strides)
-    assert_array_equal(B, expected)
-
-    G = gather(A, shape, strides)
-    assert_array_equal(G, expected)
-
-    S = gather_sparse(A, shape, strides)
-    assert_array_equal(S, expected)
-
-    SSF = scatter_sparse(A, reverse_shape, reverse_strides, output_shape=shape)
-    assert_array_equal(SSF, expected)
-
-    # Reverse
-    AA = zeros_nearby(expected, 14)
-    BR = as_strided(AA, reverse_shape, reverse_strides)
-    assert_array_equal(BR, reverse_expected)
-
-    GR = gather(AA, reverse_shape, reverse_strides)
-    assert_array_equal(GR, reverse_expected)
-
-    SR = gather_sparse(AA, reverse_shape, reverse_strides)
-    assert_array_equal(SR, reverse_expected)
-
-    SS = scatter_sparse(AA, shape, strides, output_shape=A.shape)
-    assert_array_equal(SS, reverse_expected)
-
 
 def test_exercise02(A):
     strides = (1,)
@@ -118,33 +91,6 @@ def test_exercise02(A):
 
     run(**locals())
 
-    # Forward
-    B = as_strided(A, shape, strides)
-    assert_array_equal(B, expected)
-
-    G = gather(A, shape, strides)
-    assert_array_equal(G, expected)
-
-    S = gather_sparse(A, shape, strides)
-    assert_array_equal(S, expected)
-
-    SSF = scatter_sparse(A, reverse_shape, reverse_strides, output_shape=shape)
-    assert_array_equal(SSF, expected)
-
-    # Reverse
-    AA = zeros_nearby(expected, 17)
-    BR = as_strided(AA, reverse_shape, reverse_strides)
-    assert_array_equal(BR, reverse_expected)
-
-    GR = gather(AA, reverse_shape, reverse_strides)
-    assert_array_equal(GR, reverse_expected)
-
-    SR = gather_sparse(AA, reverse_shape, reverse_strides)
-    assert_array_equal(SR, reverse_expected)
-
-    SS = scatter_sparse(AA, shape, strides, output_shape=A.shape)
-    assert_array_equal(SS, reverse_expected)
-
 
 def test_exercise03(A):
     strides = (1,)
@@ -156,33 +102,6 @@ def test_exercise03(A):
     reverse_expected = A
 
     run(**locals())
-
-    # Forward
-    B = as_strided(A, shape, strides)
-    assert_array_equal(B, expected)
-
-    G = gather(A, shape, strides)
-    assert_array_equal(G, expected)
-
-    S = gather_sparse(A, shape, strides)
-    assert_array_equal(S, expected)
-
-    SSF = scatter_sparse(A, reverse_shape, reverse_strides, output_shape=shape)
-    assert_array_equal(SSF, expected)
-
-    # Reverse
-    AA = expected.copy()
-    BR = as_strided(AA, reverse_shape, reverse_strides)
-    assert_array_equal(BR, reverse_expected)
-
-    GR = gather(AA, reverse_shape, reverse_strides)
-    assert_array_equal(GR, reverse_expected)
-
-    SR = gather_sparse(AA, reverse_shape, reverse_strides)
-    assert_array_equal(SR, reverse_expected)
-
-    SS = scatter_sparse(AA, shape, strides, output_shape=A.shape)
-    assert_array_equal(SS, reverse_expected)
 
 
 def test_exercise04(A):
@@ -198,33 +117,6 @@ def test_exercise04(A):
 
     run(**locals())
 
-    # Forward
-    B = as_strided(A, shape, strides)
-    assert_array_equal(B, expected)
-
-    G = gather(A, shape, strides)
-    assert_array_equal(G, expected)
-
-    S = gather_sparse(A, shape, strides)
-    assert_array_equal(S, expected)
-
-    SSF = scatter_sparse(A, reverse_shape, reverse_strides, output_shape=shape)
-    assert_array_equal(SSF, expected)
-
-    # Reverse
-    AA = zeros_nearby(expected, 12)
-    BR = as_strided(AA, reverse_shape, reverse_strides, output_shape=A.shape)
-    assert_array_equal(BR, reverse_expected)
-
-    GR = gather(AA, reverse_shape, reverse_strides, output_shape=A.shape)
-    assert_array_equal(GR, reverse_expected)
-
-    SR = gather_sparse(AA, reverse_shape, reverse_strides, output_shape=A.shape)
-    assert_array_equal(SR, reverse_expected)
-
-    SS = scatter_sparse(AA, shape, strides, output_shape=A.shape)
-    assert_array_equal(SS, reverse_expected)
-
 
 def test_exercise05(A):
     strides = (5,)
@@ -239,33 +131,6 @@ def test_exercise05(A):
 
     run(**locals())
 
-    # Forward
-    B = as_strided(A, shape, strides)
-    assert_array_equal(B, expected)
-
-    G = gather(A, shape, strides)
-    assert_array_equal(G, expected)
-
-    S = gather_sparse(A, shape, strides)
-    assert_array_equal(S, expected)
-
-    SSF = scatter_sparse(A, reverse_shape, reverse_strides, output_shape=shape)
-    assert_array_equal(SSF, expected)
-
-    # Reverse
-    AA = zeros_nearby(expected, 21)
-    BR = as_strided(AA, reverse_shape, reverse_strides)
-    assert_array_equal(BR, reverse_expected)
-
-    GR = gather(AA, reverse_shape, reverse_strides)
-    assert_array_equal(GR, reverse_expected)
-
-    SR = gather_sparse(AA, reverse_shape, reverse_strides)
-    assert_array_equal(SR, reverse_expected)
-
-    SS = scatter_sparse(AA, shape, strides, output_shape=A.shape)
-    assert_array_equal(SS, reverse_expected)
-
 
 def test_exercise06(A):
     strides = (6,)
@@ -279,33 +144,6 @@ def test_exercise06(A):
 
     run(**locals())
 
-    # Forward
-    B = as_strided(A, shape, strides)
-    assert_array_equal(B, expected)
-
-    G = gather(A, shape, strides)
-    assert_array_equal(G, expected)
-
-    S = gather_sparse(A, shape, strides)
-    assert_array_equal(S, expected)
-
-    SSF = scatter_sparse(A, reverse_shape, reverse_strides, output_shape=shape)
-    assert_array_equal(SSF, expected)
-
-    # Reverse
-    AA = zeros_nearby(expected, 16)
-    BR = as_strided(AA, reverse_shape, reverse_strides)
-    assert_array_equal(BR, reverse_expected)
-
-    GR = gather(AA, reverse_shape, reverse_strides)
-    assert_array_equal(GR, reverse_expected)
-
-    SR = gather_sparse(AA, reverse_shape, reverse_strides)
-    assert_array_equal(SR, reverse_expected)
-
-    SS = scatter_sparse(AA, shape, strides, output_shape=A.shape)
-    assert_array_equal(SS, reverse_expected)
-
 
 def test_exercise07(A):
     strides = (0,)
@@ -318,21 +156,6 @@ def test_exercise07(A):
     skip_reverse = True
     run(**locals())
 
-    # Forward
-    B = as_strided(A, shape, strides)
-    assert_array_equal(B, expected)
-
-    G = gather(A, shape, strides)
-    assert_array_equal(G, expected)
-
-    S = gather_sparse(A, shape, strides)
-    assert_array_equal(S, expected)
-
-    # Reverse
-    AA = expected.copy()
-    SS = scatter_sparse(AA, shape, strides, output_shape=A.shape)
-    assert_array_equal(SS, reverse_expected)
-
 
 def test_exercise08(A):
     strides = (5, 1)
@@ -344,21 +167,6 @@ def test_exercise08(A):
 
     skip_reverse = True
     run(**locals())
-
-    # Forward
-    B = as_strided(A, shape, strides)
-    assert_array_equal(B, expected)
-
-    G = gather(A, shape, strides)
-    assert_array_equal(G, expected)
-
-    S = gather_sparse(A, shape, strides)
-    assert_array_equal(S, expected)
-
-    # Reverse
-    AA = expected.copy()
-    SS = scatter_sparse(AA, shape, strides, output_shape=A.shape)
-    assert_array_equal(SS, reverse_expected)
 
 
 def test_exercise09(A):
@@ -373,21 +181,6 @@ def test_exercise09(A):
     skip_reverse = True
     run(**locals())
 
-    # Forward
-    B = as_strided(A, shape, strides)
-    assert_array_equal(B, expected)
-
-    G = gather(A, shape, strides)
-    assert_array_equal(G, expected)
-
-    S = gather_sparse(A, shape, strides)
-    assert_array_equal(S, expected)
-
-    # Reverse
-    AA = expected.copy()
-    SS = scatter_sparse(AA, shape, strides, output_shape=A.shape)
-    assert_array_equal(SS, reverse_expected)
-
 
 def test_exercise10(A):
     strides = (10, 2)
@@ -399,21 +192,6 @@ def test_exercise10(A):
 
     skip_reverse = True
     run(**locals())
-
-    # Forward
-    B = as_strided(A, shape, strides)
-    assert_array_equal(B, expected)
-
-    G = gather(A, shape, strides)
-    assert_array_equal(G, expected)
-
-    S = gather_sparse(A, shape, strides)
-    assert_array_equal(S, expected)
-
-    # Reverse
-    AA = expected.copy()
-    SS = scatter_sparse(AA, shape, strides, output_shape=A.shape)
-    assert_array_equal(SS, reverse_expected)
 
 
 def test_exercise11(A):
@@ -427,21 +205,6 @@ def test_exercise11(A):
     skip_reverse = True
     run(**locals())
 
-    # Forward
-    B = as_strided(A, shape, strides)
-    assert_array_equal(B, expected)
-
-    G = gather(A, shape, strides)
-    assert_array_equal(G, expected)
-
-    S = gather_sparse(A, shape, strides)
-    assert_array_equal(S, expected)
-
-    # Reverse
-    AA = expected.copy()
-    SS = scatter_sparse(AA, shape, strides, output_shape=A.shape)
-    assert_array_equal(SS, reverse_expected)
-
 
 def test_exercise12(A):
     strides = (5, 0)
@@ -453,21 +216,6 @@ def test_exercise12(A):
 
     skip_reverse = True
     run(**locals())
-
-    # Forward
-    B = as_strided(A, shape, strides)
-    assert_array_equal(B, expected)
-
-    G = gather(A, shape, strides)
-    assert_array_equal(G, expected)
-
-    S = gather_sparse(A, shape, strides)
-    assert_array_equal(S, expected)
-
-    # Reverse
-    AA = expected.copy()
-    SS = scatter_sparse(AA, shape, strides, output_shape=A.shape)
-    assert_array_equal(SS, reverse_expected)
 
 
 def test_exercise13():
@@ -481,33 +229,6 @@ def test_exercise13():
     reverse_expected = A
 
     run(**locals())
-
-    # Forward
-    B = as_strided(A, shape, strides)
-    assert_array_equal(B, expected)
-
-    G = gather(A, shape, strides)
-    assert_array_equal(G, expected)
-
-    S = gather_sparse(A, shape, strides)
-    assert_array_equal(S, expected)
-
-    SSF = scatter_sparse(A, reverse_shape, reverse_strides, output_shape=shape)
-    assert_array_equal(SSF, expected)
-
-    # Reverse
-    AA = expected.copy()
-    BR = as_strided(AA, reverse_shape, reverse_strides)
-    assert_array_equal(BR, reverse_expected)
-
-    GR = gather(AA, reverse_shape, reverse_strides)
-    assert_array_equal(GR, reverse_expected)
-
-    SR = gather_sparse(AA, reverse_shape, reverse_strides)
-    assert_array_equal(SR, reverse_expected)
-
-    SS = scatter_sparse(AA, shape, strides, output_shape=A.shape)
-    assert_array_equal(SS, reverse_expected)
 
 
 def test_exercise14():
@@ -523,21 +244,6 @@ def test_exercise14():
 
     skip_reverse = True
     run(**locals())
-
-    # Forward
-    B = as_strided(A, shape, strides)
-    assert_array_equal(B, expected)
-
-    G = gather(A, shape, strides)
-    assert_array_equal(G, expected)
-
-    S = gather_sparse(A, shape, strides)
-    assert_array_equal(S, expected)
-
-    # Reverse
-    AA = expected.copy()
-    SS = scatter_sparse(AA, shape, strides, output_shape=A.shape)
-    assert_array_equal(SS, reverse_expected)
 
 
 def test_exercise15():
@@ -561,21 +267,6 @@ def test_exercise15():
     skip_reverse = True
     run(**locals())
 
-    # Forward
-    B = as_strided(A, shape, strides)
-    assert_array_equal(B, expected)
-
-    G = gather(A, shape, strides)
-    assert_array_equal(G, expected)
-
-    S = gather_sparse(A, shape, strides)
-    assert_array_equal(S, expected)
-
-    # Reverse
-    AA = expected.copy()
-    SS = scatter_sparse(AA, shape, strides, output_shape=A.shape)
-    assert_array_equal(SS, reverse_expected)
-
 
 def test_exercise16():
     A = np.arange(1, 13, dtype=np.uint8).reshape((3, 2, 2))
@@ -590,30 +281,6 @@ def test_exercise16():
     skip_gather_sparse_reverse = True
     run(**locals())
 
-    # Forward
-    B = as_strided(A, shape, strides)
-    assert_array_equal(B, expected)
-
-    G = gather(A, shape, strides)
-    assert_array_equal(G, expected)
-
-    S = gather_sparse(A, shape, strides)
-    assert_array_equal(S, expected)
-
-    SSF = scatter_sparse(A, reverse_shape, reverse_strides, output_shape=shape)
-    assert_array_equal(SSF, expected)
-
-    # Reverse
-    AA = expected.copy()
-    BR = as_strided(AA, reverse_shape, reverse_strides)
-    assert_array_equal(BR, reverse_expected)
-
-    GR = gather(AA, reverse_shape, reverse_strides)
-    assert_array_equal(GR, reverse_expected)
-
-    SS = scatter_sparse(AA, shape, strides, output_shape=A.shape)
-    assert_array_equal(SS, reverse_expected)
-
 
 def test_exercise17(A):
     strides = (15, 5, 1)
@@ -627,18 +294,6 @@ def test_exercise17(A):
     skip_gather_sparse = True
     skip_reverse = True
     run(**locals())
-
-    # Forward
-    B = as_strided(A, shape, strides)
-    assert_array_equal(B, expected)
-
-    G = gather(A, shape, strides)
-    assert_array_equal(G, expected)
-
-    # Reverse
-    AA = expected.copy()
-    SS = scatter_sparse(AA, shape, strides, output_shape=A.shape)
-    assert_array_equal(SS, reverse_expected)
 
 
 def test_exercise18(A):
@@ -656,18 +311,6 @@ def test_exercise18(A):
     skip_reverse = True
     run(**locals())
 
-    # Forward
-    B = as_strided(A, shape, strides)
-    assert_array_equal(B, expected)
-
-    G = gather(A, shape, strides)
-    assert_array_equal(G, expected)
-
-    # Reverse
-    AA = expected.copy()
-    SS = scatter_sparse(AA, shape, strides, output_shape=A.shape)
-    assert_array_equal(SS, reverse_expected)
-
 
 def test_exercise19(A):
     strides = (0, 5, 1)
@@ -680,18 +323,6 @@ def test_exercise19(A):
     skip_gather_sparse = True
     skip_reverse = True
     run(**locals())
-
-    # Forward
-    B = as_strided(A, shape, strides)
-    assert_array_equal(B, expected)
-
-    G = gather(A, shape, strides)
-    assert_array_equal(G, expected)
-
-    # Reverse
-    AA = expected.copy()
-    SS = scatter_sparse(AA, shape, strides, output_shape=A.shape)
-    assert_array_equal(SS, reverse_expected)
 
 
 def test_exercise20():
@@ -707,27 +338,6 @@ def test_exercise20():
     skip_gather_sparse = True
     skip_gather_sparse_reverse = True
     run(**locals())
-
-    # Forward
-    B = as_strided(A, shape, strides)
-    assert_array_equal(B, expected)
-
-    G = gather(A, shape, strides)
-    assert_array_equal(G, expected)
-
-    SSF = scatter_sparse(A, reverse_shape, reverse_strides, output_shape=shape)
-    assert_array_equal(SSF, expected)
-
-    # Reverse
-    AA = expected.copy()
-    BR = as_strided(AA, reverse_shape, reverse_strides)
-    assert_array_equal(BR, reverse_expected)
-
-    GR = gather(AA, reverse_shape, reverse_strides)
-    assert_array_equal(GR, reverse_expected)
-
-    SS = scatter_sparse(G, shape, strides, output_shape=A.shape)
-    assert_array_equal(SS, reverse_expected)
 
 
 def test_exercise21():
@@ -752,18 +362,6 @@ def test_exercise21():
     skip_reverse = True
     run(**locals())
 
-    # Forward
-    B = as_strided(A, shape, strides)
-    assert_array_equal(B, expected)
-
-    G = gather(A, shape, strides)
-    assert_array_equal(G, expected)
-
-    # Reverse
-    AA = expected.copy()
-    SS = scatter_sparse(AA, shape, strides, output_shape=A.shape)
-    assert_array_equal(SS, reverse_expected)
-
 
 def test_exercise22():
     A = np.arange(1, 13, dtype=np.uint8)
@@ -777,30 +375,6 @@ def test_exercise22():
 
     skip_gather_sparse = True
     run(**locals())
-
-    # Forward
-    B = as_strided(A, shape, strides)
-    assert_array_equal(B, expected)
-
-    G = gather(A, shape, strides)
-    assert_array_equal(G, expected)
-
-    SSF = scatter_sparse(A, reverse_shape, reverse_strides, output_shape=shape)
-    assert_array_equal(SSF, expected)
-
-    # Reverse
-    AA = expected.copy()
-    BR = as_strided(AA, reverse_shape, reverse_strides)
-    assert_array_equal(BR, reverse_expected)
-
-    GR = gather(AA, reverse_shape, reverse_strides)
-    assert_array_equal(GR, reverse_expected)
-
-    SR = gather_sparse(AA, reverse_shape, reverse_strides)
-    assert_array_equal(SR, reverse_expected)
-
-    SS = scatter_sparse(AA, shape, strides, output_shape=A.shape)
-    assert_array_equal(SS, reverse_expected)
 
 
 def test_exercise23(A):
@@ -825,18 +399,6 @@ def test_exercise23(A):
     skip_reverse = True
     run(**locals())
 
-    # Forward
-    B = as_strided(A, shape, strides)
-    assert_array_equal(B, expected)
-
-    G = gather(A, shape, strides)
-    assert_array_equal(G, expected)
-
-    # Reverse
-    AA = expected.copy()
-    SS = scatter_sparse(AA, shape, strides, output_shape=A.shape)
-    assert_array_equal(SS, reverse_expected)
-
 
 def test_exercise24():
     A = np.arange(1, 13, dtype=np.uint8).reshape((2, 2, 3))
@@ -849,18 +411,6 @@ def test_exercise24():
     skip_gather_sparse = True
     skip_reverse = True
     run(**locals())
-
-    # Forward
-    B = as_strided(A, shape, strides)
-    assert_array_equal(B, expected)
-
-    G = gather(A, shape, strides)
-    assert_array_equal(G, expected)
-
-    # Reverse
-    AA = expected.copy()
-    SS = scatter_sparse(AA, shape, strides, output_shape=A.shape)
-    assert_array_equal(SS, reverse_expected)
 
 
 def test_exercise25():
@@ -875,27 +425,3 @@ def test_exercise25():
 
     skip_gather_sparse = True
     run(**locals())
-
-    # Forward
-    B = as_strided(A, shape, strides)
-    assert_array_equal(B, expected)
-
-    G = gather(A, shape, strides)
-    assert_array_equal(G, expected)
-
-    SSF = scatter_sparse(A, reverse_shape, reverse_strides, output_shape=shape)
-    assert_array_equal(SSF, expected)
-
-    # Reverse
-    AA = expected.copy()
-    BR = as_strided(AA, reverse_shape, reverse_strides)
-    assert_array_equal(BR, reverse_expected)
-
-    GR = gather(AA, reverse_shape, reverse_strides)
-    assert_array_equal(GR, reverse_expected)
-
-    SR = gather_sparse(AA, reverse_shape, reverse_strides)
-    assert_array_equal(SR, reverse_expected)
-
-    SS = scatter_sparse(AA, shape, strides, output_shape=A.shape)
-    assert_array_equal(SS, reverse_expected)
